@@ -20,7 +20,7 @@ The flow will present a simple Web page with a text field where to input the ima
 ![Reco-Lab-VisualRecognitionFlow.png](images/reco_lab_visual_recognition_flow.png)
 The nodes required to build this flow are:
 
- - A ![`HTTPInput`](/introduction_to_node_red/images/node_red_httpinput.png) node, configured with a `/reco` URL
+ - A ![`HTTPInput`](/introduction_to_node_red/images/node_red_httpinput.png) input node, configured with a `/reco` URL
  - A ![`switch`](/introduction_to_node_red/images/node_red_switch.png) node which will test for the presence of the `imageurl` query parameter:
    ![Reco-Lab-Switch-Node-Props](images/reco_lab_switch_node_props.png)
  - A first ![template](/introduction_to_node_red/images/node_red_template.png) node, configured to output an HTML input field and suggest a few selected images taken from the main Watson Visual Recognition demo web page:
@@ -28,16 +28,18 @@ The nodes required to build this flow are:
     <h1>Welcome to the Watson Visual Recognition Demo on Node-RED</h1>
     <h2>Select an image URL</h2>
     <form  action="{{req._parsedUrl.pathname}}">
-        <img src="http://visual-recognition-demo.mybluemix.net/images/horses.jpg" height='100'/>
-        <img src="http://visual-recognition-demo.mybluemix.net/images/73388.jpg" height='100'/>
-        <img src="http://visual-recognition-demo.mybluemix.net/images/26537.jpg" height='100'/>
-        <img src="http://visual-recognition-demo.mybluemix.net/images/4068.jpg" height='100'/>
+    <img src="https://github.com/watson-developer-cloud/visual-recognition-nodejs/blob/v1/public/images/horses.jpg?raw=true" height='100'/>
+     <img src="https://github.com/watson-developer-cloud/visual-recognition-nodejs/blob/v1/public/images/73388.jpg?raw=true" height='100'/>
+     <img src="https://github.com/watson-developer-cloud/visual-recognition-nodejs/blob/v1/public/images/26537.jpg?raw=true" height='100'/>
+     <img src="https://github.com/watson-developer-cloud/visual-recognition-nodejs/blob/v1/public/images/4068.jpg?raw=true" height='100'/>
         <br/>Copy above image location URL or enter any image URL:<br/>
         <input type="text" name="imageurl"/>
         <input type="submit" value="Analyze"/>
     </form>
+
+
 ```
-![Reco-Lab-Template1-Node-Props](images/reco_lab_template1_node_props.png)
+![Reco-Lab-Template1-Node-Props](images/reco_lab_template1_node_propsV2.png)
  
 - A ![change](/introduction_to_node_red/images/node_red_change.png) node (named `Extract img URL` here) to extract the `imageurl` query parameter from the web request and assign it to the payload to be provided as input to the Visual Recognition node:
 ![Reco-Lab-Change_and_Reco-Node-Props](images/reco_lab_change_and_reco_node_props.png)
