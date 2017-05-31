@@ -49,19 +49,25 @@ The nodes required to build this flow are:
 
  - And a final  ![`template`](/introduction_to_node_red/images/node_red_template.png) node linked to the ![`HTTPResponse`](/introduction_to_node_red/images/node_red_httpresponse.png) output node. The template will format the output returned from the Visual Recognition node into an HTML table for easier reading:
 ```HTML
-    <h1>Node-RED Watson Visual Recognition output</h1>
-    <p>Analyzed image: {{payload}}<br/><img src="{{payload}}" height='100'/></p>
-    <table border='1'>
-        <thead><tr><th>Name</th><th>Score</th></tr></thead>
-        {{#labels}}
-          <tr><td><b>{{label_name}}</b></td><td><i>{{label_score}}</i></td></tr>
-        {{/labels}}
-    </table>
-    <form  action="{{req._parsedUrl.pathname}}">
-        <input type="submit" value="Try again"/>
-    </form>
+ <h1>Visual Recognition</h1>
+<p>Analyzed image: {{#result}}{{#images}}{{resolved_url}}<br/><img src="{{resolved_url}}" height='100'/></p>{{/images}}{{/result}}
+<table border='1'>
+<thead><tr><th>Name</th><th>Score</th></tr></thead>
+{{#result}}
+{{#images}}
+{{#classifiers}}
+{{#classes}}
+<tr><td><b>{{class}}</b></td><td><i>{{score}}</i></td></tr>
+{{/classes}}
+{{/classifiers}}
+{{/images}}
+{{/result}}
+</table>
+<form action="{{req._parsedUrl.pathname}}">
+<input type="submit" value=Try_again>
+</form>
 ```
-![Reco-Lab-TemplateReport-Node-Props](images/reco_lab_templatereport_node_props.png)  
+![Reco-Lab-TemplateReport-Node-Props](images/reco_lab_templatereport_node_propsV2.png)  
 Note that the HTML snippet above has been simplified and stripped out of non-essential HTML tags, the completed flow solution has a complete HTML page.
 
 ### Testing the flow
