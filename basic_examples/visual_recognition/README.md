@@ -41,7 +41,7 @@ The nodes required to build this flow are:
 ```
 ![Reco-Lab-Template1-Node-Props](images/reco_lab_template1_node_propsV2.png)
  
-- A ![change](/introduction_to_node_red/images/node_red_change.png) node (named `Extract img URL` here) to extract the `imageurl` query parameter from the web request and assign it to the payload to be provided as input to the Visual Recognition node. Make sure you select **msg.** option from the pulldown next to the label **to** as shown below and enter ``payload.imageurl``  as the value
+- A ![change](/introduction_to_node_red/images/node_red_change.png) node (named `Extract img URL` here) to extract the `imageurl` query parameter from the web request and assign it to the payload to be provided as input to the Visual Recognition node. Make sure you select the **msg.** option from the pulldown next to the label **to** as shown below and enter ``payload.imageurl``  as the value
 ![Reco-Lab-Change_and_Reco-Node-Props](images/reco_lab_change_and_reco_node_propsV2.png)
 
  - The ![Watson Visual Recognition](images/node_red_watson_visual_recognition.png) node. Make sure that the credentials are setup from bluemix, i.e. that the service is bound to the application. This can be verified by checking that the properties for the Visual Recognition node are clear:
